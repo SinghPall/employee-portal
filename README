@@ -1,0 +1,16 @@
+Spring Boot Web Application using Spring MVC and Spring Rest for Employee Portal.
+Below is the list of features for the application:
+•	Employee should be able to register/login to access the system
+•	Raise a new Ticket Request
+•	List/Fetch details for tickets raised by the logged in employee
+•	Delete/Update tickets raised by the logged in employee
+
+All the ticket operations in the Employee Portal should also be accessible through REST APIs.
+Design for the user interface, build tool, database can be selected as per the needs.
+In addition to the above features, application must implement the below functionalities:
+•	Logging (File and Console)
+•	Caching
+•	Testing (Unit and Integration)
+•	Monitoring (using Actuators)
+•	Exception Handling
+•	Multiple profiles for different environments
