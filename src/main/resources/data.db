@@ -1,0 +1,25 @@
+DROP TABLE IF EXISTS ticket;
+DROP TABLE IF EXISTS employee;
+ 
+CREATE TABLE employee(
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  name VARCHAR(250) NOT NULL,
+  password VARCHAR(250) DEFAULT NULL
+);
+ 
+INSERT INTO employee (id, name, password) VALUES
+  (1, 'Aliko', 'password'),
+  (2, 'Bill', 'password'),
+  (3, 'Folrunsho', 'password');
+ 
+CREATE TABLE ticket (
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  empid INT NOT NULL,
+  type VARCHAR(200),
+  desc VARCHAR(500) DEFAULT NULL,
+  FOREIGN KEY (empid) REFERENCES employee(id)
+);
+ 
+INSERT INTO ticket (id, empid, type, desc) VALUES
+  (1, 1, 'Install software', 'Please install sw'),
+  (2, 2, 'LAN issue', 'Facing LAN connectivity issue');  

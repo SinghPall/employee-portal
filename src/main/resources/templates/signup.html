@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Employee Portal</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p th:text="${msg} + '!'" />
+	<div class="container">
+		<form class="form-horizontal" role="form" method="POST"
+			th:action="@{/employee/signup}" th:object="${emp}">
+		
+		<div class="row">
+             <div class="col-md-3 field-label-responsive">
+                 <label for="name">Name</label>
+             </div>
+             <div class="col-md-6">
+                 <div class="form-group">
+                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                         <input type="text" th:field="*{name}" class="form-control" id="name"
+                                placeholder="Name" required autofocus>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="row">
+             <div class="col-md-3 field-label-responsive">
+                 <label for="name">Password</label>
+             </div>
+             <div class="col-md-6">
+                 <div class="form-group">
+                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                         <input type="password" th:field="*{pass}" class="form-control" id="pass" required autofocus>
+                     </div>
+                 </div>
+             </div>
+         </div>
+		 <div class="row">
+             <div class="col-md-3"></div>
+             <div class="col-md-6">
+                 <button type="submit" class="btn btn-success">Register</button>
+             </div>
+         </div>	
+		</form>
+	</div>
+</body>
+</html>

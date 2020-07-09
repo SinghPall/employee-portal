@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ticket Details</title>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<main role="main" class="container">
+    <div class="starter-template">
+        <h1>Ticket Details</h1>
+        <!-- <h2><span th:text="'Hello, ' + ${name}"></span></h2> -->
+    </div>
+    <table border="1">
+    <tr style="font-size: 13">
+    <!-- style="display:none;" -->
+            <td >TicketId</td><td>EmpId</td> <td>Type</td> <td>Desc</td> <td>Edit</td><td>Delete</td>
+    </tr>
+    <tr th:each="ticket: ${tickets}">
+    	<td th:text="${ticket.id}"/><td th:text="${ticket.empId}"/>
+    	<td th:text="${ticket.type}"/><td th:text="${ticket.desc}"/>
+    	<td> <form th:action="@{/employee/update}" th:object="${ticket2}" method="post">
+             <input type="hidden" name="id" th:value="${ticket.id}">
+             <input type="hidden" name="empId" th:value="${ticket.empId}">
+             <input type="hidden" name="type" th:value="${ticket.type}">
+             <input type="hidden" name="desc" th:value="${ticket.desc}">
+             <button type="submit">Edit</button></form>
+        </td>
+    	<td> <form th:action="@{/employee/delete}" th:object="${ticket2}" method="post">
+    		 <input type="hidden" name="id" th:value="${ticket.id}">
+             <input type="hidden" name="empId" th:value="${ticket.empId}">
+             <input type="hidden" name="type" th:value="${ticket.type}">
+             <input type="hidden" name="desc" th:value="${ticket.desc}">
+             <button type="submit">Delete</button></form>
+        </td>
+	</tr>
+	</table><br><br>
+</main>
+<div class="container">
+		<form class="form-horizontal" role="form" method="POST"
+			th:action="@{/employee/ticket}" th:object="${ticket}">
+<!-- 		<input type="hidden" th:value="${name}"> -->
+		<div class="row">
+		 	<div class="col-md-3 field-label-responsive">
+                 <label for="name">EmployeeId</label>
+             </div>
+             <div class="col-md-6">
+                 <div class="form-group">
+                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                         <input type="text" th:field="*{empId}" class="form-control" id="empid"
+                                placeholder="Type" readonly>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-md-3 field-label-responsive">
+                 <label for="name">Type</label>
+             </div>
+             <div class="col-md-6">
+                 <div class="form-group">
+                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                         <input type="text" th:field="*{type}" class="form-control" id="type"
+                                placeholder="Type" required autofocus>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="row">
+             <div class="col-md-3 field-label-responsive">
+                 <label for="name">Description</label>
+             </div>
+             <div class="col-md-6">
+                 <div class="form-group">
+                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                         <input type="text" th:field="*{desc}" class="form-control" id="desc" required autofocus>
+                     </div>
+                 </div>
+             </div>
+         </div>
+		 <div class="row">
+             <div class="col-md-3"></div>
+             <div class="col-md-6">
+                 <button type="submit" class="btn btn-success">Submit</button>
+             </div>
+         </div>	
+		</form>
+	</div>
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>
